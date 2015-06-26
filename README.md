@@ -1,18 +1,18 @@
 # TrunkClubService
-
-# The database used in this project is embedded Java DB
+===========================================================================================================
+### The database used in this project is embedded Java DB
 ===========================================================================================================
 
-# To Run The Service:
-1- You have to set the database first:
-  a-open services tab in netbeans
-  b-create a new Java DB database (specify at least a username to the database)
-2-make sure that the persistance.xml file is refering to the database
-  a-open persistance.xml file
-  b-under data source combobox choose new datasource
-  c-go through the wizard to get the newly created database
-  d-make sure to name the persistance unit name = TrunkClubServicePU
-3-Run the service on glassfish server.
+## To Run The Service:
+* 1- You have to set the database first:
+  * a-open services tab in netbeans
+  * b-create a new Java DB database (specify at least a username to the database)
+* 2-make sure that the persistance.xml file is refering to the database:
+  * a-open persistance.xml file
+  * b-under data source combobox choose new datasource
+  * c-go through the wizard to get the newly created database
+  * d-make sure to name the persistance unit name = TrunkClubServicePU
+* 3-Run the service on glassfish server:
 ===========================================================================================================
 # Design Criteria:
 # Database : embedded Java DB was used for simplicity as it is available on netbeans without any additional setup.
@@ -53,5 +53,5 @@ Web Service Paths:
   -------------------------------------------------------------
 7-update a todo as done by using the todo id 
   URL:        http://localhost:8080/TrunkClubService/SetDone
-  Properties: PUT Request with input JSON that has a parameter ToDoID for the todo. Returns the updated todo item in JSON format
+  Properties: PUT Request with input JSON that has a parameter ToDoID for the todo. Returns the updated todo item in JSON 
               A Parse Exception is thrown in case of non compatible JSON
