@@ -4,15 +4,15 @@
 ===========================================================================================================
 
 ## To Run The Service:
-* 1- You have to set the database first:
-  * a-open services tab in netbeans
-  * b-create a new Java DB database (specify at least a username to the database)
-* 2-make sure that the persistance.xml file is refering to the database:
-  * a-open persistance.xml file
-  * b-under data source combobox choose new datasource
-  * c-go through the wizard to get the newly created database
-  * d-make sure to name the persistance unit name = TrunkClubServicePU
-* 3-Run the service on glassfish server:
+*  You have to set the database first:
+  * open services tab in netbeans
+  * create a new Java DB database (specify at least a username to the database)
+* make sure that the persistance.xml file is refering to the database:
+  * open persistance.xml file
+  * under data source combobox choose new datasource
+  * go through the wizard to get the newly created database
+  * make sure to name the persistance unit name = TrunkClubServicePU
+* Run the service on glassfish server:
 ===========================================================================================================
 # Design Criteria:
 # Database : embedded Java DB was used for simplicity as it is available on netbeans without any additional setup.
