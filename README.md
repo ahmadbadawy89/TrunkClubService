@@ -21,35 +21,35 @@
   * Data Access Models for the entity classes (DAO)
   * Service interface and Implementation that maps to the main functionality of the project.
   * Restful Web Service Controller to control how the data is passed and through which paths.
-===========================================================================================================
-Web Service Paths:
-1-Add a todo for a username, if the username is not available a new user is created
+
+## Web Service Paths:
+* Add a todo for a username, if the username is not available a new user is created
   URL:        http://localhost:8080/TrunkClubService/AddToDoUser
   Properties: Post Request passing a JSON object with values for the userName, toDo, dueData(as string in the format "yyyy-MM-dd").
               A Parse Exception is thrown in case of non compatible JSON
   -------------------------------------------------------------
-2-Add a todo for a user ID, if the ID is not available nothing happens
+* Add a todo for a user ID, if the ID is not available nothing happens
   URL:        http://localhost:8080/TrunkClubService/AddToDoUserID
   Properties: Post Request passing a JSON object with values for the userID, toDo, dueData(as string in the format "yyyy-MM-dd")
               A Parse Exception is thrown in case of non compatible JSON
   -------------------------------------------------------------
-3-Retrieve todo by user ID 
+* Retrieve todo by user ID 
   URL:        http://localhost:8080/TrunkClubService/RetrieveDataUserID
   Properties: GET Request with parameter for the userID. Returns a todo list in JSON format
   -------------------------------------------------------------
-4-Retrieve todo by user Name 
+* Retrieve todo by user Name 
   URL:        http://localhost:8080/TrunkClubService/RetrieveDataUser
   Properties: GET Request with parameter for the userName. Returns a todo list in JSON format
   -------------------------------------------------------------
-5-Retrieve incomplete todo by user ID 
+* Retrieve incomplete todo by user ID 
   URL:        http://localhost:8080/TrunkClubService/RetrieveInCompleteUserID
   Properties: GET Request with parameter for the userID. Returns a todo list in JSON format
    -------------------------------------------------------------
-6-Retrieve incomplete todo by user Name 
+* Retrieve incomplete todo by user Name 
   URL:        http://localhost:8080/TrunkClubService/RetrieveInCompleteUser
   Properties: GET Request with parameter for the userName. Returns a todo list in JSON format
   -------------------------------------------------------------
-7-update a todo as done by using the todo id 
+* update a todo as done by using the todo id 
   URL:        http://localhost:8080/TrunkClubService/SetDone
   Properties: PUT Request with input JSON that has a parameter ToDoID for the todo. Returns the updated todo item in JSON 
               A Parse Exception is thrown in case of non compatible JSON
