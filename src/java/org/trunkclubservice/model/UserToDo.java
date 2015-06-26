@@ -32,8 +32,7 @@ public class UserToDo implements Serializable {
     private long id;//the id for the user
     @Column(unique = true)
     private String userName;//string for the username
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="user_id")
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<ToDo> toDos = new ArrayList();//the relation for the todo and the user (one to many)
 
     public UserToDo(String userName) {

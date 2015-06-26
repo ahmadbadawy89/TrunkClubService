@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -30,11 +32,15 @@ public class ToDo implements Serializable {
     @Temporal(TemporalType.DATE)//todo due date is stored as a date with no time in the database
     private Date dueDate;//the due date of the todo
     private boolean done;//a boolean to know if todo the is done or not
-
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private UserToDo user;//the relation to the user
+    
     public ToDo(String toDoItem, Date dueDate, boolean done, UserToDo user) {
         this.toDoItem = toDoItem;
         this.dueDate = dueDate;
         this.done = done;
+        this.user=user;
     }
 
     public long getId() {
@@ -72,4 +78,11 @@ public class ToDo implements Serializable {
     public ToDo() {
     }
 
+    public UserToDo getUser() {
+        return user;
+    }
+
+    public void setUser(UserToDo user) {
+        this.user = user;
+    }
 }
