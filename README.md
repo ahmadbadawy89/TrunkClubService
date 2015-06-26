@@ -1,10 +1,7 @@
 # TrunkClubService
 
-### The database used in this project is embedded Java DB
-
-
 ## To Run The Service:
-*  You have to set the database first:
+*  You have to set the database first (Embedded Java DB was used):
   * open services tab in netbeans
   * create a new Java DB database (specify at least a username to the database)
 * make sure that the persistance.xml file is refering to the database:
@@ -15,15 +12,15 @@
 * Run the service on glassfish server
 
 
-# Design Criteria:
-# Database : embedded Java DB was used for simplicity as it is available on netbeans without any additional setup.
-# Data Persistance: JPA was used in this project. I could have done it with JDBC but I prefered to try it with JPA ORM (for the sake of learning).
-# Project: 
-# the project consists of several layers:
-  a-Entity classes to model the data in the database (code first approach was used).
-  b-Data Access Models for the entity classes (DAO)
-  c-Service interface and Implementation that maps to the main functionality of the project.
-  d-Restful Web Service Controller to control how the data is passed and through which paths.
+## Design Criteria:
+ * Database : embedded Java DB was used for simplicity as it is available on netbeans without any additional setup.
+ * Data Persistance: JPA was used in this project. I could have done it with JDBC but I prefered to try it with JPA ORM (for the sake of learning).
+ * Project: 
+ the project consists of several layers:
+  * Entity classes to model the data in the database (code first approach was used).
+  * Data Access Models for the entity classes (DAO)
+  * Service interface and Implementation that maps to the main functionality of the project.
+  * Restful Web Service Controller to control how the data is passed and through which paths.
 ===========================================================================================================
 Web Service Paths:
 1-Add a todo for a username, if the username is not available a new user is created
