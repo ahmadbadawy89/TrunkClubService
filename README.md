@@ -1,7 +1,7 @@
 # TrunkClubService
-===========================================================================================================
+
 ### The database used in this project is embedded Java DB
-===========================================================================================================
+
 
 ## To Run The Service:
 *  You have to set the database first:
@@ -12,8 +12,9 @@
   * under data source combobox choose new datasource
   * go through the wizard to get the newly created database
   * make sure to name the persistance unit name = TrunkClubServicePU
-* Run the service on glassfish server:
-===========================================================================================================
+* Run the service on glassfish server
+
+
 # Design Criteria:
 # Database : embedded Java DB was used for simplicity as it is available on netbeans without any additional setup.
 # Data Persistance: JPA was used in this project. I could have done it with JDBC but I prefered to try it with JPA ORM (for the sake of learning).
