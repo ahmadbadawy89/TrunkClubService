@@ -24,32 +24,35 @@
 
 ## Web Service Paths:
 * Add a todo for a username, if the username is not available a new user is created
-  URL:        http://localhost:8080/TrunkClubService/AddToDoUser
-  Properties: Post Request passing a JSON object with values for the userName, toDo, dueData(as string in the format "yyyy-MM-dd").
-              A Parse Exception is thrown in case of non compatible JSON
-  -------------------------------------------------------------
+  * URL:        http://localhost:8080/TrunkClubService/AddToDoUser
+  * Properties: 
+   * Post Request passing a JSON object with values for the userName, toDo, dueData(as string in the format "yyyy-MM-dd").
+   * A Parse Exception is thrown in case of non compatible JSON
+
 * Add a todo for a user ID, if the ID is not available nothing happens
-  URL:        http://localhost:8080/TrunkClubService/AddToDoUserID
-  Properties: Post Request passing a JSON object with values for the userID, toDo, dueData(as string in the format "yyyy-MM-dd")
-              A Parse Exception is thrown in case of non compatible JSON
-  -------------------------------------------------------------
+  * URL:        http://localhost:8080/TrunkClubService/AddToDoUserID
+  * Properties: 
+   * Post Request passing a JSON object with values for the userID, toDo, dueData(as string in the format "yyyy-MM-dd")
+   * A Parse Exception is thrown in case of non compatible JSON
+
 * Retrieve todo by user ID 
-  URL:        http://localhost:8080/TrunkClubService/RetrieveDataUserID
-  Properties: GET Request with parameter for the userID. Returns a todo list in JSON format
-  -------------------------------------------------------------
+  * URL:        http://localhost:8080/TrunkClubService/RetrieveDataUserID
+  * Properties: GET Request with parameter for the userID. Returns a todo list in JSON format
+
 * Retrieve todo by user Name 
-  URL:        http://localhost:8080/TrunkClubService/RetrieveDataUser
-  Properties: GET Request with parameter for the userName. Returns a todo list in JSON format
-  -------------------------------------------------------------
+  * URL:        http://localhost:8080/TrunkClubService/RetrieveDataUser
+  * Properties: GET Request with parameter for the userName. Returns a todo list in JSON format
+
 * Retrieve incomplete todo by user ID 
-  URL:        http://localhost:8080/TrunkClubService/RetrieveInCompleteUserID
-  Properties: GET Request with parameter for the userID. Returns a todo list in JSON format
-   -------------------------------------------------------------
+  * URL:        http://localhost:8080/TrunkClubService/RetrieveInCompleteUserID
+  * Properties: GET Request with parameter for the userID. Returns a todo list in JSON format
+
 * Retrieve incomplete todo by user Name 
-  URL:        http://localhost:8080/TrunkClubService/RetrieveInCompleteUser
-  Properties: GET Request with parameter for the userName. Returns a todo list in JSON format
-  -------------------------------------------------------------
+  * URL:        http://localhost:8080/TrunkClubService/RetrieveInCompleteUser
+  * Properties: GET Request with parameter for the userName. Returns a todo list in JSON format
+
 * update a todo as done by using the todo id 
-  URL:        http://localhost:8080/TrunkClubService/SetDone
-  Properties: PUT Request with input JSON that has a parameter ToDoID for the todo. Returns the updated todo item in JSON 
-              A Parse Exception is thrown in case of non compatible JSON
+  * URL:        http://localhost:8080/TrunkClubService/SetDone
+  * Properties: 
+   * PUT Request with input JSON that has a parameter ToDoID for the todo. Returns the updated todo item in JSON 
+   * A Parse Exception is thrown in case of non compatible JSON
