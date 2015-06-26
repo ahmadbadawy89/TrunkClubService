@@ -28,30 +28,30 @@ public class ToDoDao {
     }
     
     public ToDo UpdateToDo(ToDo todo){
-         try{   
+         //try{   
              
-            em.getTransaction().begin();
+          //  em.getTransaction().begin();
             todo=(ToDo)em.merge(todo);
-            em.getTransaction().commit();
+         //   em.getTransaction().commit();
             
            
-        }catch(Exception ex){
+        //}catch(Exception ex){
            // em.getTransaction().rollback();
-            }
+        //    }
             return todo;
     }
     public ToDo getToDo(long todoID){
         ToDo todo=null; 
-        try{   
+        //try{   
             
-            em.getTransaction().begin();
+          //  em.getTransaction().begin();
             todo=(ToDo)em.find(ToDo.class, todoID);
-            em.getTransaction().commit();
+          //  em.getTransaction().commit();
             
            
-        }catch(Exception ex){
+        //}catch(Exception ex){
             //em.getTransaction().rollback();
-        }
+        //}
             return todo;
     }
     

@@ -12,8 +12,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceUnit;
 import org.trunkclubservice.daos.ToDoDao;
 import org.trunkclubservice.daos.UserToDoDao;
 import org.trunkclubservice.model.ToDo;
@@ -41,56 +39,143 @@ public class TrunkClubService implements ITrunkClubService {
 
     @Override
     public void CreateTodo(String username, String toDo, Date dueDate) {
+        try{
+        em.getTransaction().begin();
         UserToDo user=userDao.getUser(username);
         if(user==null)
             user=new UserToDo(username);
         ToDo todo=new ToDo(toDo, dueDate, false, user);
         user.getToDos().add(todo);
         userDao.UpdateUser(user);
+        em.getTransaction().commit();
+        }catch(Exception ex){
+            if(em.getTransaction().isActive()){
+                em.getTransaction().rollback();
+            }
+        }
+        finally{
+            em.close();
+        }
     }
 
     @Override
     public void CreateTodo(long userid, String ToDo, Date dueDate) {
+        try{
+        em.getTransaction().begin();
         UserToDo user=userDao.getUser(userid);
         ToDo todo=new ToDo(ToDo, dueDate, false, user);
         user.getToDos().add(todo);
         userDao.UpdateUser(user);
+        em.getTransaction().commit();
+        }
+        catch(Exception ex){
+            if(em.getTransaction().isActive()){
+                em.getTransaction().rollback();
+            }
+        }
+        finally{
+            em.close();
+        }
     }
 
     @Override
     public ToDo MarkAsComplete(long todoID) {
-        ToDo todo=todoDao.getToDo(todoID);
+        ToDo todo = null;
+        try{
+        em.getTransaction().begin();
+        todo=todoDao.getToDo(todoID);
         todo.setDone(true);
-        return todoDao.UpdateToDo(todo);
+        todo= todoDao.UpdateToDo(todo);
+        em.getTransaction().commit();
+        }catch(Exception ex){
+            if(em.getTransaction().isActive()){
+                em.getTransaction().rollback();
+            }
+        }
+        finally{
+            em.close();
+        }
+        return todo;
     }
 
     @Override
     public List<ToDo> RetrieveToDo(String userName) {
-        UserToDo user=userDao.getUser(userName);
-        if(user==null)
-            return null;
-        return user.getToDos();
+        List<ToDo> output=null;
+        try{
+        em.getTransaction().begin();
+        UserToDo user=userDao.getUser(userName);        
+        if(user!=null)
+            output=user.getToDos();
+        em.getTransaction().commit();
+        }catch(Exception ex){
+            if(em.getTransaction().isActive()){
+                em.getTransaction().rollback();
+            }
+        }
+        finally{
+            em.close();
+        }
+        return output;
+        
     }
 
     @Override
     public List<ToDo> RetrieveInComplete(String userName) {
+        List<ToDo> output=null;
+        try{
+        em.getTransaction().begin();
         UserToDo user=userDao.getUser(userName);
-        List<ToDo> output=getInComplete(user.getToDos());
+        if (user!=null)
+            output=getInComplete(user.getToDos());
+        em.getTransaction().commit();
+        }catch(Exception ex){
+            if(em.getTransaction().isActive()){
+                em.getTransaction().rollback();
+            }
+        }
+        finally{
+            em.close();
+        }
         return output;
     }
     
     @Override
     public List<ToDo> RetrieveToDo(long userID) {
-        UserToDo user=userDao.getUser(userID);
+        List<ToDo> output=null;
+        try{
+        em.getTransaction().begin();
+        UserToDo user=userDao.getUser(userID);        
         if(user!=null)
-        return user.getToDos();
-        else return null;
+            output= user.getToDos();
+        em.getTransaction().commit();
+        }catch(Exception ex){
+            if(em.getTransaction().isActive()){
+                em.getTransaction().rollback();
+            }
+        }
+        finally{
+            em.close();
+        }
+        return output;
     }
 
     @Override
     public List<ToDo> RetrieveInComplete(long userID) {
-        UserToDo user=userDao.getUser(userID);
-        List<ToDo> output=getInComplete(user.getToDos());
+        List<ToDo> output=null;
+        try{
+        em.getTransaction().begin();
+        UserToDo user=userDao.getUser(userID); 
+        if (user!=null)
+            output=getInComplete(user.getToDos());
+        em.getTransaction().commit();
+        }catch(Exception ex){
+            if(em.getTransaction().isActive()){
+                em.getTransaction().rollback();
+            }
+        }
+        finally{
+            em.close();
+        }
         return output;
     }
 

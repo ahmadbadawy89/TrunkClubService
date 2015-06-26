@@ -31,42 +31,42 @@ public class UserToDoDao {
 
     public UserToDo getUser(String username) {
         UserToDo user=null;
-        try {
-            em.getTransaction().begin();
+        //try {
+            //em.getTransaction().begin();
             Query query=em.createQuery("select u from UserToDo u where u.userName = :name");
             query.setParameter("name", username);
             List result=query.getResultList();
-            if(result.size()!=0)
+            if(!result.isEmpty())
                 user=(UserToDo) result.get(0);
-            em.getTransaction().commit();
-        }catch(Exception ex){
-            System.out.printf("");
-        }
+            //em.getTransaction().commit();
+        //}catch(Exception ex){
+          //  System.out.printf("");
+        //}
         if(user==null)
             return null;
         return user;
     }
 
     public UserToDo UpdateUser(UserToDo user) {
-        try{
-        em.getTransaction().begin();
+        //try{
+        //em.getTransaction().begin();
         user=em.merge(user);
-        em.getTransaction().commit();
-        }catch(Exception ex){
-            System.out.printf("");
-        }
+        //em.getTransaction().commit();
+        //}catch(Exception ex){
+        //    System.out.printf("");
+        //}
         return user;
     }
 
     public UserToDo getUser(long userid) {
         UserToDo user=null;
-        try{
-        em.getTransaction().begin();
+        //try{
+        //em.getTransaction().begin();
         user=em.find(UserToDo.class, userid);
-        em.getTransaction().commit();
-        }
-        catch(Exception ex){
-            System.out.printf("");}
+        //em.getTransaction().commit();
+        //}
+        //catch(Exception ex){
+        //    System.out.printf("");}
         return user;
     }
     
