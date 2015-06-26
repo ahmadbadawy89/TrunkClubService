@@ -33,8 +33,10 @@ public class TrunkClubService implements ITrunkClubService {
     public TrunkClubService(){
         emf=Persistence.createEntityManagerFactory("TrunkClubServicePU");
         em=emf.createEntityManager();
-        userDao=new UserToDoDao(em);
-        todoDao=new ToDoDao(em);
+        userDao=new UserToDoDao();
+        todoDao=new ToDoDao();
+        userDao.setEm(em);
+        todoDao.setEm(em);
     }
 
     @Override

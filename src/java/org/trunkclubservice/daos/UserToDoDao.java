@@ -20,9 +20,14 @@ public class UserToDoDao {
     EntityManager em ;
    
     
-    public UserToDoDao(EntityManager em) {
-        this.em=em;  
+    public UserToDoDao() {
+          
     } 
+
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
+    
 
     public UserToDo getUser(String username) {
         UserToDo user=null;

@@ -9,8 +9,6 @@ package org.trunkclubservice.daos;
 
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.UserTransaction;
 import org.trunkclubservice.model.ToDo;
 
 
@@ -21,11 +19,14 @@ import org.trunkclubservice.model.ToDo;
 public class ToDoDao {
     
     EntityManager em ;
-  
-    UserTransaction utx;
-    public ToDoDao(EntityManager em) {
-        this.em=em;
+    public ToDoDao() {
+        
     }
+
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
+    
     public ToDo UpdateToDo(ToDo todo){
          try{   
              
