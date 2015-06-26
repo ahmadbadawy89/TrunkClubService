@@ -13,7 +13,7 @@
 
 
 ## Design Criteria:
- * Programming Language: Java (JEE). I am more familiar with Spring but I tried doing it in JEE because spring was not    mentioned in the task description.
+ * Programming Language: Java (JEE). I am more familiar with Spring but I tried doing it in JEE because spring was not    mentioned in the task description. Could have used EJB but didn't have the time to learn it.
  * Database : embedded Java DB was used for simplicity as it is available on netbeans without any additional setup.
  * Data Persistance: JPA was used in this project. I could have done it with JDBC but I prefered to try it with JPA ORM (for the sake of learning).
  * Project: 
