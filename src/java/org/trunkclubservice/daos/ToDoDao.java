@@ -1,59 +1,49 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ Done By: Ahmed Badawy
  */
-
 package org.trunkclubservice.daos;
-
-
-
 import javax.persistence.EntityManager;
 import org.trunkclubservice.model.ToDo;
-
 
 /**
  *
  * @author ASafwat
  */
 public class ToDoDao {
-    
-    EntityManager em ;
+
+    EntityManager em;
+
+    //constructor
     public ToDoDao() {
-        
+
     }
 
+    //setter to set the entity manager
     public void setEm(EntityManager em) {
         this.em = em;
     }
-    
-    public ToDo UpdateToDo(ToDo todo){
-         //try{   
-             
-          //  em.getTransaction().begin();
-            todo=(ToDo)em.merge(todo);
-         //   em.getTransaction().commit();
-            
-           
-        //}catch(Exception ex){
-           // em.getTransaction().rollback();
-        //    }
-            return todo;
+
+    //function to update todo
+    /*Inputs
+    todo: todo object to be updated
+      Output
+    outputs a todo after the update
+    */
+    public ToDo UpdateToDo(ToDo todo) {
+        todo = (ToDo) em.merge(todo);
+        return todo;
     }
-    public ToDo getToDo(long todoID){
-        ToDo todo=null; 
-        //try{   
-            
-          //  em.getTransaction().begin();
-            todo=(ToDo)em.find(ToDo.class, todoID);
-          //  em.getTransaction().commit();
-            
-           
-        //}catch(Exception ex){
-            //em.getTransaction().rollback();
-        //}
-            return todo;
+
+    //function to get user by username
+    /*Inputs
+    todoID: long for the ID of the todo
+      Output
+    outputs the todo that is requested , null if it doesn't exist
+    */
+    public ToDo getToDo(long todoID) {
+        ToDo todo = null;
+        todo = (ToDo) em.find(ToDo.class, todoID);
+        return todo;
     }
-    
     
 }

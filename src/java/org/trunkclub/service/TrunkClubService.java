@@ -1,11 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Done By: Ahmed Badawy
  */
 
 package org.trunkclub.service;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,15 +18,17 @@ import org.trunkclubservice.model.UserToDo;
  *
  * @author ASafwat
  */
+//Service for implementing the interface responsible for all the main function of the service
 public class TrunkClubService implements ITrunkClubService {
     
     private EntityManagerFactory emf;
     private EntityManager em;
     private UserToDoDao userDao;
     private ToDoDao todoDao;
-    
+    private final String persistantUnitName="TrunkClubServicePU";//variable for the persistance name
+    //constructor that starts an entitymanager factory and entity manager and set them in the DAOs
     public TrunkClubService(){
-        emf=Persistence.createEntityManagerFactory("TrunkClubServicePU");
+        emf=Persistence.createEntityManagerFactory(persistantUnitName);
         em=emf.createEntityManager();
         userDao=new UserToDoDao();
         todoDao=new ToDoDao();
@@ -40,13 +39,13 @@ public class TrunkClubService implements ITrunkClubService {
     @Override
     public void CreateTodo(String username, String toDo, Date dueDate) {
         try{
-        em.getTransaction().begin();
-        UserToDo user=userDao.getUser(username);
-        if(user==null)
-            user=new UserToDo(username);
+        em.getTransaction().begin();//begin transaction
+        UserToDo user=userDao.getUser(username);//get user
+        if(user==null)//check if user exists
+            user=new UserToDo(username);//create new user if not exists
         ToDo todo=new ToDo(toDo, dueDate, false, user);
-        user.getToDos().add(todo);
-        userDao.UpdateUser(user);
+        user.getToDos().add(todo);//add the new todo to the list of todos
+        userDao.UpdateUser(user);//persist the user
         em.getTransaction().commit();
         }catch(Exception ex){
             if(em.getTransaction().isActive()){
@@ -64,7 +63,7 @@ public class TrunkClubService implements ITrunkClubService {
         em.getTransaction().begin();
         UserToDo user=userDao.getUser(userid);
         ToDo todo=new ToDo(ToDo, dueDate, false, user);
-        user.getToDos().add(todo);
+        user.getToDos().add(todo);//will throw exception if the user is null
         userDao.UpdateUser(user);
         em.getTransaction().commit();
         }
@@ -84,8 +83,10 @@ public class TrunkClubService implements ITrunkClubService {
         try{
         em.getTransaction().begin();
         todo=todoDao.getToDo(todoID);
-        todo.setDone(true);
-        todo= todoDao.UpdateToDo(todo);
+        if(todo!=null){//check if a todo exists with this id
+            todo.setDone(true);
+            todo= todoDao.UpdateToDo(todo);//persist the todo
+        }
         em.getTransaction().commit();
         }catch(Exception ex){
             if(em.getTransaction().isActive()){
@@ -104,7 +105,7 @@ public class TrunkClubService implements ITrunkClubService {
         try{
         em.getTransaction().begin();
         UserToDo user=userDao.getUser(userName);        
-        if(user!=null)
+        if(user!=null)//check if user exists
             output=user.getToDos();
         em.getTransaction().commit();
         }catch(Exception ex){
@@ -125,7 +126,7 @@ public class TrunkClubService implements ITrunkClubService {
         try{
         em.getTransaction().begin();
         UserToDo user=userDao.getUser(userName);
-        if (user!=null)
+        if (user!=null)//checks if user exists
             output=getInComplete(user.getToDos());
         em.getTransaction().commit();
         }catch(Exception ex){
@@ -178,7 +179,12 @@ public class TrunkClubService implements ITrunkClubService {
         }
         return output;
     }
-
+    //function to do get incomplete todos 
+       /*Inputs
+       toDos: list of the todos 
+         Output
+       a list of the todos that are not done
+       */
     private List<ToDo> getInComplete(List<ToDo> toDos) {
         List<ToDo> output=new ArrayList<>();
         for (ToDo toDo : toDos) {

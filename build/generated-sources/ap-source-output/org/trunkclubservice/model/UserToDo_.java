@@ -6,7 +6,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.trunkclubservice.model.ToDo;
 
-@Generated(value="EclipseLink-2.5.1.v20130918-rNA", date="2015-06-25T00:27:44")
+@Generated(value="EclipseLink-2.5.1.v20130918-rNA", date="2015-06-26T05:04:26")
 @StaticMetamodel(UserToDo.class)
 public class UserToDo_ { 
 
